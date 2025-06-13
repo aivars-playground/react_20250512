@@ -2,7 +2,7 @@
 import {useState} from "react";
 export default function Home() {
 
-    function ListItems({ints, items}) {
+    function ListItems({items, addValue}) {
         const increment = 3
         return (
             <>

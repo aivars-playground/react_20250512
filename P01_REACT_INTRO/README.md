@@ -29,8 +29,20 @@ closure
 -
 function with an access to a variable
 https://dev.to/mattdclarke/what-is-a-closure-example-use-cases-in-javascript-and-react-2e6j
-`
+```
  const increment = 3
  <button onClick={() => addValue(increment)}>Add Item</button>
-`
+```
 
+shadowing
+--------
+ListItems ints overwrites parent Home.ints and ide does not see that it is an array of ints
+```
+function Home
+   const [ints,setInts] = useState([1,2,3])
+   <ListItems ints={ints} addValue={addValue}/>
+
+
+function ListItems({ints, addValue})   
+   map ints...                  
+```
