@@ -1,10 +1,7 @@
 'use client'
 export default function Home() {
 
-    function ListItems() {
-
-        const ints = [1,2,3]
-
+    function ListItems({ints}) {
         return (
             <>
                 {
@@ -18,9 +15,11 @@ export default function Home() {
         )
     }
 
+    const ints = [1,2,3]
+
     return (
         <ul>
-            <ListItems />
+            <ListItems ints={ints} />
         </ul>
     )
 }
