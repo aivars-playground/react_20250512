@@ -1,4 +1,5 @@
 'use client'
+import {useState} from "react";
 export default function Home() {
 
     function ListItems({ints}) {
@@ -15,7 +16,7 @@ export default function Home() {
         )
     }
 
-    const ints = [1,2,3]
+    const [ints,setInts] = useState([1,2,3])
 
     return (
         <ul>

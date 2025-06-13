@@ -16,4 +16,11 @@ const ints = [1,2,3]
 function ListItems({ints})       const ints is passed to function as destructured variable
 ```
 
-
+state
+-
+reactivity... memory
+https://react.dev/learn/state-a-components-memory
+```
+import {useState} from "react";
+const [ints,setInts] = useState([1,2,3])
+```
