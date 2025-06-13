@@ -3,9 +3,10 @@ import {useState} from "react";
 export default function Home() {
 
     function ListItems({ints, items}) {
+        const increment = 3
         return (
             <>
-                <button onClick={addValue}>Add Item</button>
+                <button onClick={() => addValue(increment)}>Add Item</button>
                 {
                     ints.map(id => {
                         return (
@@ -19,8 +20,8 @@ export default function Home() {
 
     const [ints,setInts] = useState([1,2,3])
 
-    function addValue() {
-        const newValue = Math.max(...ints) + 1
+    function addValue(incrementValue) {
+        const newValue = Math.max(...ints) + incrementValue
         setInts([...ints, newValue])
     }
 
