@@ -1,8 +1,19 @@
 'use client'
 export default function Home() {
+
+    function ListItems() {
+        return (
+            <>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+            </>
+        )
+    }
+
     return (
-        <div>
-            Hello World!
-        </div>
+        <ul>
+            <ListItems />
+        </ul>
     )
 }
