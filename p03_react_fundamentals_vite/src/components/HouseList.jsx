@@ -1,24 +1,25 @@
 // import {useEffect, useState} from "react";
 import HouseRow from "./HouseRow.jsx";
-import {use, useState} from "react";
+import {useEffect, useState} from "react";
 
-const fetchHouses = fetch("https://localhost:4000/house")
-    .then(response => response.json())
+//v19 apprach - needs caching library
+// const fetchHouses = fetch("https://localhost:4000/house")
+//     .then(response => response.json())
 
 const HouseList = () => {
-    const initialData = use(fetchHouses)
+    const initialData = [] //use(fetchHouses)
     const [houses, setHouses] = useState(initialData)
 
-    //PRE 19 approach
-    // useEffect(() => {
-    //     const fetchHouses = async () => {
-    //         console.log("-------fetchHouses...");
-    //         const response = await fetch("https://localhost:4000/house")
-    //         const houses = await response.json();
-    //         setHouses(houses)
-    //     }
-    //     fetchHouses()
-    // }, [])
+    //PRE 19 approach,  //<Suspense fallback={<h3>loading...</h3>}> does not understand this...
+    useEffect(() => {
+        const fetchHouses = async () => {
+            console.log("-------fetchHouses...");
+            const response = await fetch("https://localhost:4000/house")
+            const houses = await response.json();
+            setHouses(houses)
+        }
+        fetchHouses()
+    }, [])
 
     const addHouse = () => {
         setHouses([
