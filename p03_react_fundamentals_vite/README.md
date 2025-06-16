@@ -28,6 +28,16 @@ public folder is not automatically reloaded in dev mode.. move customized css to
 * note!!!  
 all custom css files are merged together
 
+css modules
+-------
+css module is applied only to the component
+https://github.com/css-modules/css-modules
+[Banner.jsx](src/components/Banner.jsx)
+[Banner.module.css](src/components/Banner.module.css)
+***`import {logo as logoClass} from "./Banner.module.css"` import as javascript module
+
+
+
 bootstrap grid system
 ---------------------
 https://getbootstrap.com/docs/4.0/layout/grid/
