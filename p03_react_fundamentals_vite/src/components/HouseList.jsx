@@ -1,3 +1,5 @@
+import HouseRow from "./HouseRow.jsx";
+
 const houses = [
     {
         id: 1,
@@ -9,7 +11,7 @@ const houses = [
         id: 2,
         address: "sráid ard 1",
         country: "Ireland",
-        price: 10000000
+        price: 20000000
     }
 ]
 
@@ -30,13 +32,7 @@ const HouseList = () => {
                     </tr>
                 </thead>
                 <tbody>
-                {houses.map(house => (
-                      <tr key={house.id}>
-                          <td>{house.address}</td>
-                          <td>{house.country}</td>
-                          <td>{house.price}</td>
-                      </tr>
-                ))}
+                    {houses.map(h => <HouseRow house={h} key={h.id} />)}
                 </tbody>
             </table>
         </>

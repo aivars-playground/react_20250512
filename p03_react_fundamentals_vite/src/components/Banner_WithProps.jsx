@@ -22,7 +22,7 @@ const Banner_WithProps = (props) => {
 }
 
 Banner_WithProps.propTypes = {
-    headerText: propTypes.string.isRequired
+    headerText: propTypes.string.isRequired,
 }
 
 export default Banner_WithProps;
