@@ -32,9 +32,9 @@ css modules
 -------
 css module is applied only to the component
 https://github.com/css-modules/css-modules
-[Banner.jsx](src/components/Banner.jsx)
-[Banner.module.css](src/components/Banner.module.css)
-***`import {logo as logoClass} from "./Banner.module.css"` import as javascript module
+[Banner_WithProps.jsx](src/components/Banner_WithProps.jsx)
+[Banner_WithProps.module.css](src/components/Banner.module.css)
+***`import {logo as logoClass} from "./Banner_WithProps.module.css"` import as javascript module
 
 
 
@@ -42,5 +42,18 @@ bootstrap grid system
 ---------------------
 https://getbootstrap.com/docs/4.0/layout/grid/
 
+
+passing parameter
+-----------------
+when passing a parameter to a const/function, current ESlint config complains
+add proptypes definition (React) - this is Vite feature!!!
+```
+import propTypes from "prop-types"
+
+Banner_WithProps.propTypes = {
+    headerText: propTypes.string.isRequired
+}
+```
+!!!WARNING - not liked by react team - use tyoescript instead!!!
 
 
