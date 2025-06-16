@@ -50,10 +50,10 @@ const HouseList = () => {
                 <tbody>
                     {houses.map(house => <HouseRow house={house} key={house.id} />)}
                 </tbody>
-                <button onClick={addHouse} className="btn btn-primary">
-                    Add House
-                </button>
             </table>
+            <button onClick={addHouse} className="btn btn-primary">
+                Add House
+            </button>
         </>
     )
 }
