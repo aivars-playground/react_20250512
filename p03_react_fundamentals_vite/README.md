@@ -56,4 +56,7 @@ Banner_WithProps.propTypes = {
 ```
 !!!WARNING - not liked by react team - use tyoescript instead!!!
 
-
+hooks
+-----
+read hooks rules... not conditional???
+hooks passed from a parent component / state kept internally
