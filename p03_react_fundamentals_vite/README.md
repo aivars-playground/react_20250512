@@ -60,3 +60,22 @@ hooks
 -----
 read hooks rules... not conditional???
 hooks passed from a parent component / state kept internally
+
+memoizing/memorizing
+--------------------
+oprimizes rendering  
+```shell
+const HouseRowMemo = React.memo(HouseRow)
+// export default HouseRow
+export {HouseRowMemo}
+```
+use HouseRowMemo instead of HouseRow and check React dev tools plugin...   
+`[] Highlight updates when components render.`  
+unchanged items are not highlighted  
+USE PROFILER TO CHECK BENEFIT!!!  oky shalloiw comnparison!!!
+https://react.dev/reference/react/memo
+
+
+
+
+
