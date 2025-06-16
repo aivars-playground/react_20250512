@@ -1,18 +1,24 @@
-import {useEffect, useState} from "react";
+// import {useEffect, useState} from "react";
 import HouseRow from "./HouseRow.jsx";
+import {use, useState} from "react";
+
+const fetchHouses = fetch("https://localhost:4000/house")
+    .then(response => response.json())
 
 const HouseList = () => {
-    const [houses, setHouses] = useState([])
+    const initialData = use(fetchHouses)
+    const [houses, setHouses] = useState(initialData)
 
-    useEffect(() => {
-        const fetchHouses = async () => {
-            console.log("-------fetchHouses...");
-            const response = await fetch("https://localhost:4000/house")
-            const houses = await response.json();
-            setHouses(houses)
-        }
-        fetchHouses()
-    }, [])
+    //PRE 19 approach
+    // useEffect(() => {
+    //     const fetchHouses = async () => {
+    //         console.log("-------fetchHouses...");
+    //         const response = await fetch("https://localhost:4000/house")
+    //         const houses = await response.json();
+    //         setHouses(houses)
+    //     }
+    //     fetchHouses()
+    // }, [])
 
     const addHouse = () => {
         setHouses([

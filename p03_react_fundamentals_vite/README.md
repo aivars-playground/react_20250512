@@ -102,5 +102,30 @@ useEffect( () => {call db}, [])  -no dependedncies - do not retrigger!!!
 
 NOTE!!! -  <StrictMode> in main results in two calls
 https://react.dev/reference/react/StrictMode
-renders twice for testing
+renders twice for testing  
+
+
+Suspense
+--------
+shows loading screen if component is not ready
+```
+        <Suspense fallback={<h3>loading...</h3>}>
+            <HouseList/>
+        </Suspense>
+```
+
+
+a bit of an issue - new approach
+```
+const fetchHouses = fetch("https://localhost:4000/house")
+    .then(response => response.json())
+
+const HouseList = () => {
+    const initialData = use(fetchHouses)
+    const [houses, setHouses] = useState(initialData)
+```
+fetchHouses created outside of function HouseList... no way to reload when reusing component  
+put fetchHouses and infinite reload - rerender issue  
+https://tanstack.com/query/latest
+cache promises... 
 
