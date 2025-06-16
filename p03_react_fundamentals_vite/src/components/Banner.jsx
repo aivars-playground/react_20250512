@@ -1,7 +1,5 @@
 import logo from "../assets/GloboLogo.png"
 
-export default Banner
-
 const Banner = () => {
     return (
         <header>
@@ -12,3 +10,5 @@ const Banner = () => {
         </header>
     )
 }
+
+export default Banner
