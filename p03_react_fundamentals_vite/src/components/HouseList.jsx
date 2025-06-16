@@ -6,18 +6,19 @@ const HouseList = () => {
 
     useEffect(() => {
         const fetchHouses = async () => {
+            console.log("-------fetchHouses...");
             const response = await fetch("https://localhost:4000/house")
             const houses = await response.json();
             setHouses(houses)
         }
         fetchHouses()
-    })
+    }, [])
 
     const addHouse = () => {
         setHouses([
             ...houses,
             {
-                id: 3,
+                id: 10,
                 address: "Hauptstraße 1",
                 country: "DE",
                 price: 30000000,

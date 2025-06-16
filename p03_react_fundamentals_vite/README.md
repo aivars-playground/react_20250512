@@ -4,9 +4,17 @@ https://app.pluralsight.com/library/courses/react-18-fundamentals
 https://github.com/aivars-playground/react-fundamentals
 https://github.com/RolandGuijt/react-fundamentals
 
+FRONTEND
 ```shell
 npm run dev
 ```
+BACKEND
+* install dotnet 9
+```shell
+cd HousesApi/HousesApi
+dotnet run
+```
+
 
 adding image
 ------------
@@ -80,12 +88,19 @@ Pure function vs Effect
 -----------------------
 Pure function cacheable  
 
+use effect - fetch data from backend...
+NOTE - run only once, do not call db on a redraw!!!
 
-
-BACKEND
--------
-* install dotnet 9
-```shell
-cd HousesApi/HousesApi
-dotnet run
 ```
+useEffect(
+   parameter1 - do something
+   parameter2 - if parameter2 changes, then retrigger
+)
+
+useEffect( () => {call db}, [])  -no dependedncies - do not retrigger!!!
+```
+
+NOTE!!! -  <StrictMode> in main results in two calls
+https://react.dev/reference/react/StrictMode
+renders twice for testing
+
