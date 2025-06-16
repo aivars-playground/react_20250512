@@ -76,6 +76,16 @@ USE PROFILER TO CHECK BENEFIT!!!  oky shalloiw comnparison!!!
 https://react.dev/reference/react/memo
 
 
+Pure function vs Effect
+-----------------------
+Pure function cacheable  
 
 
 
+BACKEND
+-------
+* install dotnet 9
+```shell
+cd HousesApi/HousesApi
+dotnet run
+```

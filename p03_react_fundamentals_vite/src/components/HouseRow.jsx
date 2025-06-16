@@ -1,6 +1,6 @@
 import propTypes from "prop-types"
 import currencyFormatter from "../helpers/currencyFormatter.jsx";
-import React from "react";
+// import React from "react";
 
 const HouseRow = ({house: {address, country,price}}) => {
     return (
@@ -20,7 +20,7 @@ HouseRow.propTypes = {
     })
 }
 
-const HouseRowMemo = React.memo(HouseRow)
-export {HouseRowMemo}
+// const HouseRowMemo = React.memo(HouseRow)
+// export {HouseRowMemo}
 
-// export default HouseRow
+export default HouseRow

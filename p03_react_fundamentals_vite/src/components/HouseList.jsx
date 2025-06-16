@@ -1,25 +1,17 @@
-// import HouseRow from "./HouseRow.jsx";
-import {useState} from "react";
-import {HouseRowMemo} from "./HouseRow.jsx";
-
-const housesArray = [
-    {
-        id: 1,
-        address: "highstreet 1",
-        country: "UK",
-        price: 10000000
-    },
-    {
-        id: 2,
-        address: "sráid ard 1",
-        country: "IE",
-        price: 20000000
-    }
-]
+import {useEffect, useState} from "react";
+import HouseRow from "./HouseRow.jsx";
 
 const HouseList = () => {
+    const [houses, setHouses] = useState([])
 
-    const [houses, setHouses] = useState(housesArray)
+    useEffect(() => {
+        const fetchHouses = async () => {
+            const response = await fetch("https://localhost:4000/house")
+            const houses = await response.json();
+            setHouses(houses)
+        }
+        fetchHouses()
+    })
 
     const addHouse = () => {
         setHouses([
@@ -49,7 +41,7 @@ const HouseList = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {houses.map(house => <HouseRowMemo house={house} key={house.id} />)}
+                    {houses.map(house => <HouseRow house={house} key={house.id} />)}
                 </tbody>
             </table>
             <button onClick={addHouse} className="btn btn-primary">
