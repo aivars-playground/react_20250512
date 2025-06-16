@@ -129,3 +129,7 @@ put fetchHouses and infinite reload - rerender issue
 https://tanstack.com/query/latest
 cache promises... 
 
+Reference hook
+-------------
+`const rerenderCounter = useRef(0)` persisted across renders
+

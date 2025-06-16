@@ -1,6 +1,6 @@
 // import {useEffect, useState} from "react";
 import HouseRow from "./HouseRow.jsx";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 
 //v19 apprach - needs caching library
 // const fetchHouses = fetch("https://localhost:4000/house")
@@ -9,16 +9,18 @@ import {useEffect, useState} from "react";
 const HouseList = () => {
     const initialData = [] //use(fetchHouses)
     const [houses, setHouses] = useState(initialData)
+    const rerenderCounter = useRef(0)
 
     //PRE 19 approach,  //<Suspense fallback={<h3>loading...</h3>}> does not understand this...
     useEffect(() => {
         const fetchHouses = async () => {
-            console.log("-------fetchHouses...");
             const response = await fetch("https://localhost:4000/house")
             const houses = await response.json();
             setHouses(houses)
         }
         fetchHouses()
+        rerenderCounter.current++
+        console.log("---effect called times: ", rerenderCounter.current)
     }, [])
 
     const addHouse = () => {
