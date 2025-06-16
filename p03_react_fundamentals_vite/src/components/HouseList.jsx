@@ -32,7 +32,7 @@ const HouseList = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {houses.map(h => <HouseRow house={h} key={h.id} />)}
+                    {houses.map(house => <HouseRow house={house} key={house.id} />)}
                 </tbody>
             </table>
         </>
