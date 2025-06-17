@@ -1,27 +1,31 @@
 // import {useEffect, useState} from "react";
 import HouseRow from "./HouseRow.jsx";
-import {useEffect, useRef, useState} from "react";
+import house from "./House.jsx";
+import useHouses from "../hooks/useHouses.js";
+//import {useEffect, useRef, useState} from "react";
 
 //v19 apprach - needs caching library
 // const fetchHouses = fetch("https://localhost:4000/house")
 //     .then(response => response.json())
 
 const HouseList = ({selectHouse}) => {
-    const initialData = [] //use(fetchHouses)
-    const [houses, setHouses] = useState(initialData)
-    const rerenderCounter = useRef(0)
+    // const initialData = [] //use(fetchHouses)
+    // const [houses, setHouses] = useState(initialData)
+    // const rerenderCounter = useRef(0)
 
     //PRE 19 approach,  //<Suspense fallback={<h3>loading...</h3>}> does not understand this...
-    useEffect(() => {
-        const fetchHouses = async () => {
-            const response = await fetch("https://localhost:4000/house")
-            const houses = await response.json();
-            setHouses(houses)
-        }
-        fetchHouses()
-        rerenderCounter.current++
-        console.log("---effect called times: ", rerenderCounter.current)
-    }, [])
+    // useEffect(() => {
+    //     const fetchHouses = async () => {
+    //         const response = await fetch("https://localhost:4000/house")
+    //         const houses = await response.json();
+    //         setHouses(houses)
+    //     }
+    //     fetchHouses()
+    //     rerenderCounter.current++
+    //     console.log("---effect called times: ", rerenderCounter.current)
+    // }, [])
+
+    const {houses,setHouses}  = useHouses();
 
     const addHouse = () => {
         setHouses([

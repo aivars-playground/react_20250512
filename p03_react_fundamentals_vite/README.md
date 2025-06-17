@@ -237,3 +237,12 @@ useCallback is a React Hook that returns a memoized version of a callback functi
 )
 ```
 Note!!! -   gependencies for a cllback above:  `[]`   means - callback function is memorized and is recreated only when component is mounted   
+
+
+
+Custom Hooks 
+------------
+hook is a javascript file with a `hook*` prefix
+
+each time a new component calls the hook, new instance of hook is created, with a new  internal state
+
