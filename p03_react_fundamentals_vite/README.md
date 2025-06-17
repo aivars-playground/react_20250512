@@ -131,5 +131,19 @@ cache promises...
 
 Reference hook
 -------------
-`const rerenderCounter = useRef(0)` persisted across renders
+`const rerenderCounter = useRef(0)` persisted across renders - like a class variable
+
+vonditionals
+------------
+{price && - creates a td only if price is truthy - https://developer.mozilla.org/en-US/docs/Glossary/Truthy
+That is, all values are truthy except false, 0, -0, 0n, "", null, undefined, NaN, and document.all
+```jsx
+            {price &&
+                <td className={`${price >= 500000 ? "text-primary" : ""}`}>
+                    {currencyFormatter.format(price)}
+                </td>
+            }
+```
+
+
 
