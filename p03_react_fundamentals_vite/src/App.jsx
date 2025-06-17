@@ -3,7 +3,7 @@ import "./App.css"
 import Banner from "./components/Banner.jsx";
 import HouseList from "./components/HouseList.jsx";
 import {Suspense, useState} from "react";
-import House from "./House.jsx";
+import House from "./components/House.jsx";
 
 function App() {
 
@@ -17,7 +17,7 @@ function App() {
                 {
                     selectedHouse
                         ?<House house = {selectedHouse}/>
-                        :<HouseList/>
+                        :<HouseList selectHouse={setSelectedHouse}/>
                 }
             </Suspense>
         </>

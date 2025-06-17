@@ -1,6 +1,6 @@
 
 // eslint-disable-next-line react/prop-types
-import currencyFormatter from "./helpers/currencyFormatter.jsx";
+import currencyFormatter from "../helpers/currencyFormatter.jsx";
 
 // eslint-disable-next-line react/prop-types
 const House = ({house}) => {

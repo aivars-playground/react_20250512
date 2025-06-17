@@ -2,14 +2,14 @@ import propTypes from "prop-types"
 import currencyFormatter from "../helpers/currencyFormatter.jsx";
 // import React from "react";
 
-const HouseRow = ({house: {address, country, price}}) => {
+const HouseRow = ({house, selectHouse}) => {
     return (
-        <tr>
-            <td>{address}</td>
-            <td>{country}</td>
-            {price &&
-                <td className={`${price >= 500000 ? "text-primary" : ""}`}>
-                    {currencyFormatter.format(price)}
+        <tr onClick={() => selectHouse(house)}>
+            <td>{house.address}</td>
+            <td>{house.country}</td>
+            {house.price &&
+                <td className={`${house.price >= 500000 ? "text-primary" : ""}`}>
+                    {currencyFormatter.format(house.price)}
                 </td>
             }
         </tr>

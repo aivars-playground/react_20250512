@@ -6,7 +6,7 @@ import {useEffect, useRef, useState} from "react";
 // const fetchHouses = fetch("https://localhost:4000/house")
 //     .then(response => response.json())
 
-const HouseList = () => {
+const HouseList = ({selectHouse}) => {
     const initialData = [] //use(fetchHouses)
     const [houses, setHouses] = useState(initialData)
     const rerenderCounter = useRef(0)
@@ -51,7 +51,9 @@ const HouseList = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {houses.map(house => <HouseRow house={house} key={house.id} />)}
+                    {houses.map(house =>
+                        <HouseRow selectHouse={selectHouse} house={house} key={house.id} />)
+                    }
                 </tbody>
             </table>
             <button onClick={addHouse} className="btn btn-primary">
