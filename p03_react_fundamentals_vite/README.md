@@ -254,3 +254,10 @@ class ErrorBoundary extends React.Component
 
 <ErrorBoundary fallback="oops">DoSomething</ErrorBoundary>
 ```
+
+context
+-------
+pass selected house - pass props to multiple levels... alternative - use navigation context
+
+[navValues.js](src/navigation/navValues.js)   - pages
+

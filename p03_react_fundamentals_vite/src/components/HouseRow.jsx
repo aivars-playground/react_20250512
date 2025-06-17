@@ -1,30 +1,23 @@
-import propTypes from "prop-types"
-import currencyFormatter from "../helpers/currencyFormatter.jsx";
-// import React from "react";
+import { useContext } from "react";
+import currencyFormatter from "../helpers/currencyFormatter";
+import navigationContext from "../navigation/navigationContext";
+import navValues from "../navigation/navValues";
 
-const HouseRow = ({house, selectHouse}) => {
+const HouseRow = ({ house }) => {
+    //uncomment to test error boundary
+    //throw new Error();
+    const { navigate } = useContext(navigationContext);
     return (
-        <tr onClick={() => selectHouse(house)}>
+        <tr onClick={() => navigate(navValues.house, house)}>
             <td>{house.address}</td>
             <td>{house.country}</td>
-            {house.price &&
+            {house.price && (
                 <td className={`${house.price >= 500000 ? "text-primary" : ""}`}>
                     {currencyFormatter.format(house.price)}
                 </td>
-            }
+            )}
         </tr>
-    )
-}
+    );
+};
 
-HouseRow.propTypes = {
-    house: propTypes.shape({
-        address: propTypes.string,
-        country: propTypes.string,
-        price: propTypes.numeric,
-    })
-}
-
-// const HouseRowMemo = React.memo(HouseRow)
-// export {HouseRowMemo}
-
-export default HouseRow
+export default HouseRow;

@@ -1,65 +1,56 @@
-// import {useEffect, useState} from "react";
-import HouseRow from "./HouseRow.jsx";
-//import house from "./House.jsx";
-import useHouses from "../hooks/useHouses.js";
-import LoadingIndicator from "./LoadingIndicator.jsx";
-import loadingStatus from "../helpers/loadingStatus.js";
-import {useEffect, useRef} from "react";
+import loadingStatus from "../helpers/loadingStatus";
+import useHouses from "../hooks/useHouses";
+import ErrorBoundary from "./ErrorBoundary";
+import HouseRow from "./HouseRow";
+import LoadingIndicator from "./LoadingIndicator";
 
-const HouseList = ({selectHouse}) => {
+const HouseList = () => {
 
-    const houseListCount = useRef(0)
+    const { houses, setHouses, loadingState } = useHouses();
 
-    useEffect(() => {
-        houseListCount.current++
-        console.log("---HouseList times: ", houseListCount.current)
-    })
-
-    const {houses,setHouses, loadingState}  = useHouses();
+    if (loadingState !== loadingStatus.loaded)
+        return <LoadingIndicator loadingState={loadingState} />
 
     const addHouse = () => {
         setHouses([
             ...houses,
             {
-                id: 10,
-                address: "Hauptstraße 1",
-                country: "DE",
-                price: 30000000,
-            }
-        ])
-    }
-
-    if (loadingState !== loadingStatus.loaded) {
-        console.log("---HouseList loading screen")
-        return <LoadingIndicator loadingState={loadingState} />
-    }
+                id: 6,
+                address: "32 Valley Way, New York",
+                country: "USA",
+                price: 1000000,
+            },
+        ]);
+    };
 
     return (
         <>
             <div className="row mb-2">
                 <h5 className="themeFontColor text-center">
-                    Houses in market
+                    Houses currently on the market
                 </h5>
             </div>
             <table className="table table-hover">
                 <thead>
-                    <tr>
-                        <th>Address</th>
-                        <th>Country</th>
-                        <th>Asked Price</th>
-                    </tr>
+                <tr>
+                    <th>Address</th>
+                    <th>Country</th>
+                    <th>Asking Price</th>
+                </tr>
                 </thead>
                 <tbody>
-                    {houses.map(house =>
-                        <HouseRow selectHouse={selectHouse} house={house} key={house.id} />)
-                    }
+                <ErrorBoundary fallback="Error loading house rows!">
+                    {houses.map((h) => (
+                        <HouseRow key={h.id} house={h} />
+                    ))}
+                </ErrorBoundary>
                 </tbody>
             </table>
             <button onClick={addHouse} className="btn btn-primary">
-                Add House
+                Add
             </button>
         </>
-    )
-}
+    );
+};
 
-export default HouseList
+export default HouseList;

@@ -1,33 +1,34 @@
 // import Banner_WithProps from "./components/Banner_WithProps.jsx";
 import "./App.css"
 import Banner from "./components/Banner.jsx";
-import HouseList from "./components/HouseList.jsx";
-import {Suspense, useState} from "react";
-import House from "./components/House.jsx";
+
 import ErrorBoundary from "./components/ErrorBoundary.jsx";
+import navValues from "./navigation/navValues.js";
+import {useCallback, useState} from "react";
+import navigationContext from "./navigation/navigationContext";
+import ComponentPicker from "./components/ComponentPicker.jsx";
+
 
 function App() {
 
-    const [selectedHouse, setSelectedHouse] = useState();
+    const navigate = useCallback(
+        (navTo, param) => setNav({ current: navTo, param, navigate }),
+        []
+    );
 
-    const setSelectedHouseWrapper = (house) => {
-        console.log("setSelectedHouseWrapper selecting house:", house);
-        setSelectedHouse(house)
-    }
+    const [nav, setNav] =
+        useState({ current: navValues.home, navigate });
 
     return (
-        <ErrorBoundary fallback="something is not right">
-            {/*<Banner_WithProps headerText="Providing houses all over the world" />*/}
-            <Banner>Providing houses all over the world</Banner>
-            <Suspense fallback={<h3>loading...</h3>}>
-                {
-                    selectedHouse
-                        ?<House house = {selectedHouse}/>
-                        :<HouseList selectHouse={setSelectedHouseWrapper}/>
-                }
-            </Suspense>
-        </ErrorBoundary>
-  )
+        <navigationContext.Provider value={nav}>
+            <ErrorBoundary fallback="Something went wrong!">
+                <Banner>
+                    <div>Providing houses all over the world</div>
+                </Banner>
+                <ComponentPicker currentNavLocation={nav.current} />
+            </ErrorBoundary>
+        </navigationContext.Provider>
+    );
 }
 
 export default App
