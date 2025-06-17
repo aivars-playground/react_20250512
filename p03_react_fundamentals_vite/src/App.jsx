@@ -2,19 +2,25 @@
 import "./App.css"
 import Banner from "./components/Banner.jsx";
 import HouseList from "./components/HouseList.jsx";
-import {Suspense} from "react";
+import {Suspense, useState} from "react";
+import House from "./House.jsx";
 
 function App() {
 
-    return (
-    <>
-        {/*<Banner_WithProps headerText="Providing houses all over the world" />*/}
-        <Banner>Providing houses all over the world</Banner>
+    const [selectedHouse, setSelectedHouse] = useState();
 
-        <Suspense fallback={<h3>loading...</h3>}>
-            <HouseList/>
-        </Suspense>
-    </>
+    return (
+        <>
+            {/*<Banner_WithProps headerText="Providing houses all over the world" />*/}
+            <Banner>Providing houses all over the world</Banner>
+            <Suspense fallback={<h3>loading...</h3>}>
+                {
+                    selectedHouse
+                        ?<House house = {selectedHouse}/>
+                        :<HouseList/>
+                }
+            </Suspense>
+        </>
   )
 }
 

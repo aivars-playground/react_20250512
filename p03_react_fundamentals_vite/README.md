@@ -145,5 +145,59 @@ That is, all values are truthy except false, 0, -0, 0n, "", null, undefined, NaN
             }
 ```
 
+passing a parameter to a component
+----------------------------------
+```jsx
+//Using props ap[ttern - props a variable name
+const Component = (props) => {
+    props.aaa
+    props.bbb
+}
 
+<Component aaa=1 bbb=2 />
+```
+
+```jsx
+//Using destructor - props a variable name
+const Component = ({aaa,bbb}) => {
+    props.aaa
+    props.bbb
+}
+
+<Component aaa=1 bbb=2 />
+```
+
+Note....  eslint-disable-next-line react/prop-types requires adding
+```
+Component.propTypes = {
+    address: propTypes.string.isRequired,
+    country: propTypes.string,
+    price: propTypes.numeric,
+}
+
+for 
+  const HouseRow = (house) =>
+   or
+  const HouseRow = ({address, country, price}) =>
+```
+
+or a shape if both object and destructor is used
+```
+Component.propTypes = {
+    house: propTypes.shape({
+        address: propTypes.string,
+        country: propTypes.string,
+        price: propTypes.numeric,
+    })
+}
+
+for const HouseRow = ({house: {address, country, price}})   <--- destructor for house
+```
+
+
+calling a destructor on a house object (house is a destructed value, not props!!!) - see curly races
+```
+  const HouseRow = ({house}) =>
+  const {address, country, price} = house
+```
 
