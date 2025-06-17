@@ -3,17 +3,13 @@ import currencyFormatter from "../helpers/currencyFormatter.jsx";
 // import React from "react";
 
 const HouseRow = ({house: {address, country, price}}) => {
-    let priceCell;
-    if (price < 500000)
-        priceCell =  <td>{currencyFormatter.format(price)}</td>
-    else
-        priceCell = <td className="text-primary">{currencyFormatter.format(price)}</td>
-
     return (
         <tr>
             <td>{address}</td>
             <td>{country}</td>
-            {priceCell}
+            <td className={`${price >= 500000 ? "text-primary" : ""}`}>
+                {currencyFormatter.format(price)}
+            </td>
         </tr>
     )
 }
