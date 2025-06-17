@@ -1,21 +1,29 @@
 import {useEffect, useRef, useState} from "react";
+import loadingStatus from "../helpers/loadingStatus.js";
 
 const useHouses = () => {
     const [houses, setHouses] = useState([])
-    const rerenderCounter = useRef(0)
+    const [loadingState, setLoadingState] = useState(
+        loadingStatus.isLoading
+    );
 
     useEffect(() => {
         const fetchHouses = async () => {
-            const response = await fetch("https://localhost:4000/house")
-            const houses = await response.json();
-            setHouses(houses)
+            setLoadingState(loadingStatus.isLoading)
+            try {
+                const response = await fetch("https://localhost:4000/house")
+                const houses = await response.json();
+                setHouses(houses)
+                setLoadingState(loadingStatus.loaded)
+            } catch (error) {
+                console.log(error)
+                setLoadingState(loadingStatus.hasErrored)
+            }
         }
         fetchHouses()
-        rerenderCounter.current++
-        console.log("---effect called times: ", rerenderCounter.current)
     }, [])
 
-    return {houses, setHouses}
+    return {houses, setHouses, loadingState}
 }
 
 export default useHouses;
