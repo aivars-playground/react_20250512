@@ -246,3 +246,11 @@ hook is a javascript file with a `hook*` prefix
 
 each time a new component calls the hook, new instance of hook is created, with a new  internal state
 
+Error boundary 
+--------------
+ncurrently not supported as JSX syntax, must be a old-school Class COmponent
+```jsx
+class ErrorBoundary extends React.Component 
+
+<ErrorBoundary fallback="oops">DoSomething</ErrorBoundary>
+```
