@@ -201,3 +201,39 @@ calling a destructor on a house object (house is a destructed value, not props!!
   const {address, country, price} = house
 ```
 
+selecting a house
+-----------------
+App component either displays a list or selected house and controls house selection
+```jsx
+function App() {
+
+    const [selectedHouse, setSelectedHouse] = useState();
+    
+    return {
+                    selectedHouse
+                        ?<House house = {selectedHouse}/>
+                        :<HouseList selectHouse={setSelectedHouse}/>
+    }
+```
+
+let's itroduce some safety (typesafe preffered,but checks can be done in a wrapper)
+```jsx
+    const [selectedHouse, setSelectedHouse] = useState();
+
+    const setSelectedHouseWrapper = (house) => {setSelectedHouse(house)} 
+```
+
+and to avoid rerenders, use callback so the function reference qwould be the same
+```
+useCallback is a React Hook that returns a memoized version of a callback function. This means it caches the function reference between renders, ensuring the function is only recreated when its dependencies change. This optimization helps prevent unnecessary re-renders of child components that rely on this function, particularly when passed as props
+```
+```jsx
+    const setSelectedHouseWrapper = useCallback(
+    (house) => {
+        console.log("setSelectedHouseWrapper selecting house:", house);
+        setSelectedHouse(house)
+    },
+    []
+)
+```
+Note!!! -   gependencies for a cllback above:  `[]`   means - callback function is memorized and is recreated only when component is mounted   

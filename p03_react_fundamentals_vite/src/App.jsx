@@ -9,6 +9,11 @@ function App() {
 
     const [selectedHouse, setSelectedHouse] = useState();
 
+    const setSelectedHouseWrapper = (house) => {
+        console.log("setSelectedHouseWrapper selecting house:", house);
+        setSelectedHouse(house)
+    }
+
     return (
         <>
             {/*<Banner_WithProps headerText="Providing houses all over the world" />*/}
@@ -17,7 +22,7 @@ function App() {
                 {
                     selectedHouse
                         ?<House house = {selectedHouse}/>
-                        :<HouseList selectHouse={setSelectedHouse}/>
+                        :<HouseList selectHouse={setSelectedHouseWrapper}/>
                 }
             </Suspense>
         </>
