@@ -260,4 +260,24 @@ context
 pass selected house - pass props to multiple levels... alternative - use navigation context
 
 [navValues.js](src/navigation/navValues.js)   - pages
+[navigationContext.js](src/navigation/navigationContext.js) context
+```jsx
+APP.jsx
+    return (
+    <navigationContext.Provider value={nav}>
+        <ErrorBoundary fallback="Something went wrong!">
+            <Banner>
+                <div>Providing houses all over the world</div>
+            </Banner>
+            <ComponentPicker currentNavLocation={nav.current} />
+        </ErrorBoundary>
+    </navigationContext.Provider>
+);
+```
+
+
+router
+------
+currently changing page does not change url... do we want url to change (i.e to bookmark a page? - deeplink)
+use own implementation or import a  reacr router
 
