@@ -1,14 +1,10 @@
-import { useContext } from "react";
 import currencyFormatter from "../helpers/currencyFormatter";
-import navigationContext from "../navigation/navigationContext";
-import navValues from "../navigation/navValues";
+import { useNavigate } from "react-router";
 
 const HouseRow = ({ house }) => {
-    //uncomment to test error boundary
-    //throw new Error();
-    const { navigate } = useContext(navigationContext);
+    const navigate = useNavigate();
     return (
-        <tr onClick={() => navigate(navValues.house, house)}>
+        <tr onClick={() => navigate(`/house/${house.id}`, { state: { house } })}>
             <td>{house.address}</td>
             <td>{house.country}</td>
             {house.price && (

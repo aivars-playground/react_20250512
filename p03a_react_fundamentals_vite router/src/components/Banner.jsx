@@ -1,8 +1,7 @@
 import { useContext } from "react";
 import logo from "../assets/GloboLogo.png"
 import {logo as logoClass} from "./Banner.module.css"
-import navigationContext from "../navigation/navigationContext";
-import navValues from "../navigation/navValues";
+import {useNavigate} from "react-router";
 
 const subtitleStyle = {
     fontStyle: "italic",
@@ -11,7 +10,7 @@ const subtitleStyle = {
 };
 
 const Banner = ({ children }) => {
-    const { navigate } = useContext(navigationContext);
+    const { navigate } = useNavigate()
     return (
         <header className="row mb-4">
             <div className="col-5">

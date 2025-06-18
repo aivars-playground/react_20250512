@@ -1,9 +1,11 @@
-import { useContext } from "react";
 import currencyFormatter from "../helpers/currencyFormatter";
-import navigationContext from "../navigation/navigationContext";
+import {useLocation} from "react-router";
 
 const House = () => {
-  const { param: house } = useContext(navigationContext);
+
+  const location = useLocation();
+  const {house} = location.state;
+
   return (
       <>
         <div className="row">
@@ -13,7 +15,7 @@ const House = () => {
                   className="img-fluid"
                   src={
                     house.photo
-                        ? `./houseImages/${house.photo}.jpeg`
+                        ? `./houseImages/164558.jpeg`
                         : "./defaultphoto.png"
                   }
                   alt="House pic"
